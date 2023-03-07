@@ -26,20 +26,22 @@ case $cmd in
     fi
 
     #Create the volume if not existed
-    docker volume inspect pgdata
-    volume_status=$?
-    if [ $volume_status -ne 0 ]; then
-      echo "Creating volume 'pgdata'"
-      docker volume create pgdata
-    else
-      echo "Volume 'pgdata' already exists"
-    fi
+    docker volume create pgdata
 
-    #Create the container
-    docker run --name jrvs-psql -2
-
+    #pull the latest postgres image
+    docker pull postgres
+    #Create the container with entered username and password
+    docker run --name jrvs-psql -e POSTGRES_USER=$db_username -e POSTGRES_PASSWORD=$db_password -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
+    exit $?
     ;;
   start|stop)
+    if [ $container_status -eq 1 ]; then
+      echo "Container not exist"
+      exit 1
+    fi
+
+    docker container $cmd jrvs-psql
+    exit $?
     ;;
 
   #other cases
