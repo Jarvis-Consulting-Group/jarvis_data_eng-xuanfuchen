@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
      "timestamp"    TIMESTAMP NOT NULL,
      host_id        SERIAL NOT NULL,
      memory_free    INT4 NOT NULL,
-     cpu_idel       INT2 NOT NULL,
+     cpu_idle       INT2 NOT NULL,
      cpu_kernel     INT2 NOT NULL,
      disk_io        INT4 NOT NULL,
      disk_available INT4 NOT NULL,
