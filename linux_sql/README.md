@@ -100,7 +100,7 @@ If everything went well. You can type `\q` to exit the psql instance and use "./
 5. Used Crontab to automate the "host_usage" script to update the "host_usage" table every minute.
 
 ### Architecture
-Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to the `assets` directory.
+![my image](./assets/cluster_diagram.jpg)
 
 ### Scripts
 Description and usage of Shell scripts
