@@ -100,7 +100,7 @@ If everything went well. You can type `\q` to exit the psql instance and use "./
 5. Used Crontab to automate the "host_usage" script to update the "host_usage" table every minute.
 
 ### Architecture
-![my image](./assets/cluster_diagram.jpg)
+![my image](./assets/cluster_diagram.png)
 
 ### Scripts
 Description and usage of Shell scripts
