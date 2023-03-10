@@ -240,7 +240,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
 	As a result, you should see a table with 5 records whose times should be 5 consecutive minutes.
 
 ## Deployment
-The app was deployed using Crontab on a cloud machine running CentOS 7. If you want to deploy it on your own machine, please follow the Quick Start guide above.
+The app was deployed using Crontab on a cloud machine running CentOS 7. If you want to deploy it on your own machine, please follow the [Quick Start](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/develop/linux_sql#quick-start) guide above.
 
 ## Improvements
 
