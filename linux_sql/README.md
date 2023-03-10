@@ -1,4 +1,5 @@
 
+
 # Linux Monitoring Agent
 ## Introduction
 ### What does this project do?
@@ -43,9 +44,9 @@ This project contains multiple shell scripts to monitor and store the hardware u
     -- list all database
     postgres=# \l
 
-If everything goes well. Now you can type `\q` to exit the psql instance and use "./sql/ddl.sql" to create two tables: host_info and host_usage if they do not already exist.
+If everything went well. You can type `\q` to exit the psql instance and use "./sql/ddl.sql" to create two tables: "host_info" and "host_usage" if they do not already exist.
 
-    # Execute ddl.sql script on the host_agent database againse the psql instance
+    # Execute ddl.sql script on the host_agent database to create host_info and host_usage
     psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
 
 **Execute “./scripts/host_info.sh” to get hardware specifications and store them into the host_info table.**
@@ -89,43 +90,43 @@ If everything goes well. Now you can type `\q` to exit the psql instance and use
 
 ## Implemenation
 
- 1. Created and Configured a Linux server running with CentOS 7 on Google Cloud Platform
- 2. Installed Docker and created a PostgreSQL Docker container using PostgreSQL image from the Docker Hub.
- 3. Installed PSQL client and setup PSQL database
-	 - Created "host_agent" database for store data of the project
-	 - Created "host_info" table to store the hardware specification
-	 - Created "host_usage" table to store real-time server usage for each host.
-4. Created scripts for collecting corresponding data and added it to the database.
-5. Used Crontab to automate "host_usage" script to update the "host_usage" table every minute.
+1. Created and configured a Linux server running with CentOS 7 on Google Cloud Platform  
+2. Installed Docker and created a PostgreSQL Docker container using the PostgreSQL:10 image from the Docker Hub.  
+3. Installed the PSQL client and setup the PSQL database.  
+	- Created the "host_agent" database to store data for the project.  
+	- Created the "host_info" table to store the hardware specification  
+	- Created the "host_usage" table to store real-time server usage for each host.  
+4. Created scripts for collecting corresponding data and added it to the database.  
+5. Used Crontab to automate the "host_usage" script to update the "host_usage" table every minute.
 
 ### Architecture
 Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to the `assets` directory.
 
 ### Scripts
-Shell script description and usage
+Description and usage of Shell scripts
  1. **psql_docker.sh**
-This script can start, stop, or create the PostgreSQL Docker container depending on the parameters.  
+This script can start, stop, or create the PostgreSQL Docker container depending on the parameters. 
 When creating the Docker container, the name of the container would always be jrvs-psql. The username and password of the database would depend on the input parameters.
       ```
       #script usage
       ./scripts/psql_docker.sh start|stop|create <db_username> <db_password>
       ```
  2. **host_info.sh**
-This script can get hardware specifications from the output of `lscpu` command and insert those data into the host_info table in database.
-Hardware specification includes: host name, number of CPU(s), CPU architecture, CPU model, CPU frequency, L2 cache size, timestamp and total memory.
+This script can get hardware specifications from the output of the `lscpu` command and insert those data into the host_info table in the database.  
+Hardware specification includes host name, number of CPU(s), CPU architecture, CPU model, CPU frequency, L2 cache size, timestamp, and total memory.
       ```
       #script usage
       ./scripts/host_info.sh <psql_host> <psql_port> <db_name> <psql_user> <psql_password>
       ```      
  3. **host_usage.sh**
-This script can gather real-time server resources usage from the output of `vmstat` command and insert it into the host_usage table.
+This script can gather real-time server resource usage from the output of the `vmstat` command and insert it into the host_usage table.  
 Resource usage information includes: timestamp, host ID, free memory, CPU idle percentage, CPU kernel, disk IO, and available disk space. In addition, the corresponding host ID is found by using the host name in a sub-query.
       ```
       #script usage
       ./scripts/host_usage.sh <psql_host> <psql_port> <db_name> <psql_user> <psql_password>
       ```
  4. **Crontab**
-Corntab is used for automate the execution of "host_usage.sh". By adding following line to the Crontab file, the "host_usage.sh" script will be executed every minute,  that is, updating server resources usage information to the database on a minute-by-minute basis.
+Corntab is used to automate the execution of "host_usage.sh". By adding the following line to the Crontab file, the "host_usage.sh" script will be executed every minute, that is, updating server resource usage information to the database on a minute-by-minute basis.
       ```
       # add this command to your crontab file to execute host_usage.sh every minute
       # and record the exit code to a log file (optional)
@@ -164,7 +165,7 @@ The schema of each table
 ## Test
 As there were not many repetitive tasks in the testing process, I manually tested all the scripts.
 
-- Test psql_docker.sh
+- Testing psql_docker.sh.
 	- Test create feature
 
 	      # create the 'jrvs-psql' psql container with database username "postgres" and password
@@ -178,7 +179,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
       |--|--|--|--|--|--|--|
       | 92889edc9104 | postgres:10 |  "docker-entrypoint.s.." |  44 hours ago | Up 23 hours | 0.0.0.0:5432->5432/tcp, :::5432->5432/tcp | jrvs-psql |
 
-- - Test stop feature
+- - Testing stop feature. 
 
 	      # create the 'jrvs-psql' psql container with database username "postgres" and password
 	      ./scripts/psql_docker.sh create postgres <password>
@@ -189,7 +190,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
 
 	As a result, you shouldn't see any thing in the table anymore.
 
-- - Test start feature
+- - Testing start feature.
 
 	      # stop the 'jrvs-psql' container
 	      ./scripts/psql_docker.sh start
@@ -199,7 +200,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
 	As a result, you shouldn't see the 'jrvs-psql' container's information in the table again.
 	
 
-- Test host_info.sh
+- Testing host_info.sh.
 
 	    # run the host_info.sh
 	    ./scripts/host_info.sh localhost 5432 host_agent postgres <your_password>
@@ -215,7 +216,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
   |--|--|--|--|--|--|--|--|--|
   | 1 | jrvs-remote-desktop-centos7.us-east1-c.c.striking-lane-379122.internal | 2 | x86_64 | Intel(R) Xeon(R) CPU @ 2.20GHz | 2200.214 | 256 | 2023-03-08 20:19:32 | 4053556 |
 
-- Test host_usage.sh
+- Testing host_usage.sh.
 
 	    # run the host_usage.sh
 	    ./scripts/host_usage.sh localhost 5432 host_agent postgres <your_password>
@@ -232,7 +233,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
   |--|--|--|--|--|--|--|
   | 2023-03-08 21:43:13 | 1 | 3354 | 96 | 3 | 0 | 22604 |
 
-- Test if crontab is running correctly
+- Testing if crontab is running correctly.
 	```
     -- print most recent 5 record in host_usage table 
     host_agent=# SELECT * FROM host_usage ORDER BY timestamp LIMIT 5;
@@ -244,6 +245,6 @@ The app was deployed using Crontab on a cloud machine running CentOS 7. If you w
 
 ## Improvements
 
-- Feature of handling hardware updates can be added. Perhaps update the hardware specification once a day. 
-- Robustness of the system can be improved. 
-- Create a GUI for easier use and straightforward view.
+- A feature for handling hardware updates can be added. Perhaps update the hardware specification once a day.
+- The robustness of the system can be improved.
+- Create a GUI for easier use and a straightforward view.
