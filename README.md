@@ -32,7 +32,7 @@ Project source code: [https://github.com/Jarvis-Consulting-Group/jarvis_data_eng
 
 ## Professional Experiences
 
-**Junior Software Developer, Jarvis (2020-present)**: Worked in an Agile/Scrum development environment and developed the product based on the agile framework guidelines. Collaborated with the development team to discuss and deliver software solutions to our customers. Gained valuable experience from working on various software development projects in a professional work setting. Worked with practical technologies that are used in the industry, such as CentOS, Docker, PostgreSQL, Java, Spring Boot, etc.
+**Junior Software Developer, Jarvis (Feb 2023 - present)**: Worked in an Agile/Scrum development environment and developed the product based on the agile framework guidelines. Collaborated with the development team to discuss and deliver software solutions to our customers. Gained valuable experience from working on various software development projects in a professional work setting. Worked with practical technologies that are used in the industry, such as CentOS, Docker, PostgreSQL, Java, Spring Boot, etc.
 
 **Software Developer Intern, Poros Consulting (Feb 2022 - Jul 2022)**: Developed a web application for visualizing top companies?¡¥ information. Utilized Python libraries, including Request and BeautifulSoup, to fetch data from reliable financial webpages. Effectively using commercial finance APIs to get financial news related to top companies. Designed the MySQL database schema. Created maintainable components capable of updating data in MySQL databases on a daily basis. Realized data visualization using Echarts.js and implemented backend RESTful APIs using Django.
 

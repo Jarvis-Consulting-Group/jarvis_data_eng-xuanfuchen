@@ -85,7 +85,7 @@ professional_experience:
   #Write your Jarvis role as a professional experience rather than training.
   - title: "Junior Software Developer"
     company: "Jarvis"
-    duration: "2020-present"
+    duration: "Feb 2023 - present"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: "Worked in an Agile/Scrum development environment and developed the product based on the agile framework guidelines. Collaborated with the development team to discuss and deliver software solutions to our customers. Gained valuable experience from working on various software development projects in a professional work setting. Worked with practical technologies that are used in the industry, such as CentOS, Docker, PostgreSQL, Java, Spring Boot, etc."
   - title: "Software Developer Intern"
