@@ -209,14 +209,14 @@ SELECT
 	mem.surname,
 	mem.firstname,
 	mem.memid,
-	MIN(starttime)
+	MIN(starttime) as "starttime"
 FROM
 	cd.members mem JOIN cd.bookings book
 	ON mem.memid = book.memid
 WHERE
 	starttime > '2012-09-01'
 GROUP BY
-	mem.memid, mem.surname, mem.firstname
+	mem.memid
 ORDER BY
 	mem.memid;
 
