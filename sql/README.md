@@ -14,13 +14,14 @@ Run a PSQL docker container first
     -p 5432:5432 \
     postgres:10
 
-Connect load sample data into the database using "clubdata.sql"
+Load sample data into the database using "clubdata.sql"
+
 `psql -h localhost -U <username> -f clubdata.sql -d <database_name> -x -q`
 
 # Schema Diagram
 ![Schema Diagram](./assets/schema-diagram.png)
 # SQL Quries
-#### Table Setup (DDL)
+### Table Setup (DDL)
 
     -- Name: bookings; Type: TABLE; Schema: cd; Owner: -; Tablespace:
     CREATE TABLE bookings (
@@ -51,7 +52,7 @@ Connect load sample data into the database using "clubdata.sql"
         monthlymaintenance numeric NOT NULL
     );
 
-Question Types:
+### Question Types:
 - [Modifying Data](#question-type-modifying-data)
 - [Basis](#question-type-basis)
 - [Join](#question-type-join)
