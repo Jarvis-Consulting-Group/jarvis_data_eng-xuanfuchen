@@ -7,12 +7,12 @@ This project contains SQL queries that perform CRUD operations on an existing Po
 # Quick Start
 Run a PSQL docker container first
 ```shell
-    docker run \
-    -e POSTGRES_USER=<db_username> \
-    -e POSTGRES_PASSWORD=<db_password> \
-    -d -v psqldata:/var/lib/postgresql/data \
-    -p 5432:5432 \
-    postgres:10
+docker run \
+-e POSTGRES_USER=<db_username> \
+-e POSTGRES_PASSWORD=<db_password> \
+-d -v psqldata:/var/lib/postgresql/data \
+-p 5432:5432 \
+postgres:10
 ```
 Load sample data into the database using "clubdata.sql"
 ```shell
