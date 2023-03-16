@@ -16,7 +16,7 @@ Run a PSQL docker container first
 ```
 Load sample data into the database using "clubdata.sql"
 ```shell
-`psql -h localhost -U <username> -f clubdata.sql -d <database_name> -x -q`
+psql -h localhost -U <username> -f clubdata.sql -d <database_name> -x -q
 ```
 # Schema Diagram
 ![Schema Diagram](./assets/schema-diagram.png)
