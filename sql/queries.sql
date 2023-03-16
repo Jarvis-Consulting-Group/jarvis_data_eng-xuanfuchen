@@ -260,3 +260,31 @@ WHERE
 	subQ.rnk = 1;
 
 --****** String ******
+--Question
+--Output the names of all members, formatted as 'Surname, Firstname'
+SELECT
+	surname || ', ' || firstname as "name"
+FROM
+	cd.members;
+
+--Question
+--You've noticed that the club's member table has telephone numbers with very inconsistent formatting. You'd like to find all the telephone numbers that contain parentheses, returning the member ID and telephone number sorted by member ID.
+SELECT
+	memid,
+	telephone
+FROM
+	cd.members
+WHERE
+	telephone LIKE '(%)%';
+
+--Question
+--You'd like to produce a count of how many members you have whose surname starts with each letter of the alphabet. Sort by the letter, and don't worry about printing out a letter if the count is 0.
+SELECT
+	SUBSTR(surname, 1, 1) as "letter",
+	COUNT(*)
+FROM
+	cd.members
+GROUP BY
+	letter
+ORDER BY
+	letter;
