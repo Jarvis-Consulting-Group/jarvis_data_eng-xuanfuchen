@@ -51,6 +51,13 @@ Connect load sample data into the database using "clubdata.sql"
         monthlymaintenance numeric NOT NULL
     );
 
+Question Types:
+- [Modifying Data](#question-type-modifying-data)
+- [Basis](#question-type-basis)
+- [Join](#question-type-join)
+- [Aggregation](#question-type-aggregation)
+- [String](#question-type-string)
+ ---
 ### Question Type: Modifying Data
 #### Question 1: The club is adding a new facility - a spa. We need to add it into the facilities table. Use the following values: facid: 9, Name: 'Spa', membercost: 20, guestcost: 30, initialoutlay: 100000, monthlymaintenance: 800.
 
@@ -105,7 +112,7 @@ Or use TRUNCATE which is faster because does not write the deletion to the trans
       cd.members 
     WHERE 
       memid = 37;
-
+---
 ### Question Type: Basis
 #### Question 7: How can you produce a list of facilities that charge a fee to members, and that fee is less than 1/50th of the monthly maintenance cost? Return the facid, facility name, member cost, and monthly maintenance of the facilities in question.
 
@@ -161,7 +168,7 @@ Or use TRUNCATE which is faster because does not write the deletion to the trans
       name 
     FROM 
       cd.facilities;
-
+---
 ### Question Type: Join
 #### Question 12: How can you produce a list of the start times for bookings by members named 'David Farrell'?
 
@@ -228,7 +235,7 @@ Or use TRUNCATE which is faster because does not write the deletion to the trans
       ON m1.recommendedby = m2.memid 
     ORDER BY 
       member;
-
+---
 ### Question Type: Aggregation
 #### Question 17: Produce a count of the number of recommendations each member has made. Order by member ID.
 
@@ -354,7 +361,7 @@ Or use TRUNCATE which is faster because does not write the deletion to the trans
       ) AS subQ 
     WHERE 
       subQ.rnk = 1;
-
+---
 ### Question Type: String
 #### Question 26: Output the names of all members, formatted as 'Surname, Firstname'
 
