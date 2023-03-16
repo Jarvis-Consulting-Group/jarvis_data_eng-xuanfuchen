@@ -103,7 +103,7 @@ Load sample data into the database using "clubdata.sql"
 
     DELETE FROM cd.bookings;
 
-Or use TRUNCATE which is faster because does not write the deletion to the transaction log.
+Or use TRUNCATE which is faster because it does not write the deletion to the transaction log.
 
     TRUNCATE cd.bookings;
 
