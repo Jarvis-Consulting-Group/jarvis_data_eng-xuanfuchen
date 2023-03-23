@@ -10,6 +10,7 @@
       <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Order.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/OrderItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/OrderDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
