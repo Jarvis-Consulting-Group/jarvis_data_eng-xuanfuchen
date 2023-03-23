@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb319afc-368f-4f55-a17a-749b9909ffd2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DTO/OrderDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DTO/OrderLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/OrderItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/DAO/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/JDBCExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/JDBCExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/src/main/java/ca/jrvs/apps/jdbc/PO/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/DAO/CustomerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/DAO/CustomerDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/JDBCExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/JDBCExecutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/PO/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/core_java/jdbc/target/classes/ca/jrvs/apps/jdbc/PO/Customer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
