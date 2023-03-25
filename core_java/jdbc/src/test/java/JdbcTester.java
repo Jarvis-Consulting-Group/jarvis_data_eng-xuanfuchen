@@ -56,6 +56,8 @@ public class JdbcTester {
     public void test_create_customer(){
         CustomerDao customerDao = new CustomerDao(connection);
         Customer customer = new Customer("John", "Doe", "johndoe@example.com", "555-1234", "123 Main St", "Anytown", "CA", "12345");
+        Long lastID = customerDao.getLastCustomer().getId();
+        customer.setId(lastID + 1);
         customerDao.create(customer);
         String expected = customer.toString();
         String actual = customerDao.getLastCustomer().toString();
