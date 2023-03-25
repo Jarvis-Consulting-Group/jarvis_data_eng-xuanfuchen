@@ -1,8 +1,6 @@
 # Introduction
-- What does this project do?
-This project is designed to connect to a PostgreSQL database, "hplussport", and implement various operations on the customer and order tables using JDBC. The project includes two main classes: CustomerDao and OrderDao. These Data Access Objects are for interaction with the database.
-In addition, multiple Persistence Objects and Data Transfer Objects are implemented for storing data in the database and passing values between layers.
-Junit Tests are used to test all features
+- What does this project do?  
+This project is designed to connect to a PostgreSQL database, "hplussport", and implement various operations on the customer and order tables using JDBC. The project includes two main classes: CustomerDao and OrderDao. These Data Access Objects are for interaction with the database. Also, multiple Persistence Objects and Data Transfer Objects are implemented for storing data in the database and passing values between layers. In addition, Junit Tests were used to test all features.
 - Technologies 
     - Java 8
     - Maven
@@ -39,5 +37,5 @@ The DAO Pattern is focused on providing a simple and consistent interface for ac
 The Repository Pattern, on the other hand, is focused on providing a higher-level abstraction for accessing and managing data. It typically defines a set of methods that map more closely to the business logic of the application than to the low-level details of the data store. For example, instead of providing a simple CRUD interface, a repository might provide methods for retrieving all orders for a particular customer, or for computing the average order value across all orders.
 
 # Test
-I used JUnit tests to test all features because I wanted to test the program in a more systematic and repeatable way to ensure that all functions would work as expected. The JUnit file is under the directory `~/jdbc/src/test/java`.
-To test the result, I create an object with the expected data in it. Then I used `assertEquals()` to compare the actual values retrieved from the database with the expected values. Since I didn't implement the `equals()` method in my classes. I compare their values using the results from the `toString()` method.
+I used JUnit tests to test all features because I wanted to test the program in a systematic and repeatable way to ensure that all functions would work as expected. The JUnit file is under the directory `~/jdbc/src/test/java`.  
+To test the result, I created an object with the expected data first. Then I used `assertEquals()` to compare the actual values retrieved from the database with the expected values. Since I didn't implement the `equals()` method in my classes. I compare their values using the results from the `toString()` method.
