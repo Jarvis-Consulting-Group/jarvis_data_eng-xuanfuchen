@@ -20,11 +20,15 @@ public class JDBCExecutor {
                 );
         try{
             Connection connection = dcm.getConnection();
-            OrderDao orderDao = new OrderDao(connection);
-            List<OrderDto> orders = orderDao.getOrdersByCustomer(789);
-            orders.forEach(System.out::println);
-            System.out.println(orderDao.findById(1009).toString().equals(orders.get(0).toString()));
-            System.out.println(orderDao.findById(1064).toString().equals(orders.get(1).toString()));
+            CustomerDao customer = new CustomerDao(connection);
+            Customer newCustomer = new Customer("Jane", "Smith", "janedoe@example.com", "555-5678", "456 Main St", "Othertown", "NY", "67890");
+
+            System.out.println(customer.findById(10002));
+//            OrderDao orderDao = new OrderDao(connection);
+//            List<OrderDto> orders = orderDao.getOrdersByCustomer(789);
+//            orders.forEach(System.out::println);
+//            System.out.println(orderDao.findById(1009).toString().equals(orders.get(0).toString()));
+//            System.out.println(orderDao.findById(1064).toString().equals(orders.get(1).toString()));
         }catch(SQLException e){
             e.printStackTrace();
         }

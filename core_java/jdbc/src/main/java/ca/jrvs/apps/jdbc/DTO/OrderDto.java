@@ -114,7 +114,7 @@ public class OrderDto implements DataTransferObject {
     public String toString() {
         return "OrderDto{" +
                 "id=" + id +
-                ", customerFirstName='" + customerFirstName + '\'' +
+                ", customerFirstName=" + customerFirstName + '\'' +
                 ", customerLastName='" + customerLastName + '\'' +
                 ", customerEmail='" + customerEmail + '\'' +
                 ", creationDate=" + creationDate +
