@@ -13,7 +13,7 @@
   "github_repo_root_url": "https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen",
   "highlighted_projects": [
     {
-      "description": "Developed a robust online blog system that enables administrators to perform CRUD operations on articles, tags, and types while logged in. Implemented a search feature that allows users to easily find articles by name, and a group feature that enables articles to be organized by type or tags for convenient browsing. Implemented a comment feature that enables users to leave comments on articles and engage in discussions with other users. Built front-end pages using Semantic UI and Thymeleaf, and leveraged Spring Boot for a reliable and scalable backend solution. Designed a MySQL schema by carefully defining objects and relations to ensure data integrity.",
+      "description": "Developed a robust online blog system that enables administrators to perform CRUD operations on articles, tags, and types while logged in. Implemented a search feature that allows users to easily find articles by name, and a group feature that enables articles to be organized by type or tags for convenient browsing. Implemented a comment feature that enables users to leave comments on articles and reply to other comments. Built front-end pages using Semantic UI and Thymeleaf, and leveraged Spring Boot for a reliable and scalable backend solution. Designed a MySQL schema by carefully defining objects and relations to ensure data integrity.",
       "git_url": "https://github.com/xuanfuchen/BlogProject",
       "name": "Dynamic Blog Web Application"
     }
