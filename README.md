@@ -17,12 +17,12 @@ Project source code: [https://github.com/Jarvis-Consulting-Group/jarvis_data_eng
 
 **Cluster Monitor** [[GitHub](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/master/linux_sql)]: Designed and implemented monitoring system that contains multiple scripts to monitor and store the system specification and system resource usage across multiple Linux hosts. Utilized Crontab to automate the execution of scripts to ensure that the data in the database is accurate and up-to-date, system resource usage will be fetched and stored into the database at an interval of 1 minute.
 
-**SQL Project** [[GitHub](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/master/sql)]: Used PostgreSQL commands to operate create/update/delete operations to an existing database. Implemented multiple SQL queries to get desired data from the database.
+**SQL Project** [[GitHub](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/master/sql)]: Developed a comprehensive SQL project that includes the setup of a table schema using DDL, and multiple queries to perform various operations on an existing database. These operations include basic CRUD functionality, JOIN statements to combine data from multiple tables, and the use of aggregation functions to extract and summarize data. Demonstrated knowledge of SQL by manipulating string format and using various features to generate desired outputs.
 
 **Core Java Apps** [[GitHub](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/master/core_java)]:
       
   - Twitter App: In progress.
-  - JDBC App: In progress.
+  - JDBC App: Developed a Java 8 Maven-based application that uses the DAO (Data Access Object) design pattern and JDBC to perform basic CRUD (Create, Read, Update, Delete) operations on a PostgreSQL database. Enables users to perform common database operations efficiently. Employed the DAO design pattern to promote good coding practices and make the code more maintainable and extensible. Utilized a PostgreSQL database running inside a Docker container for easy deployment and management. Built the database schema and inserted data using SQL scripts.
   - Grep App: In progress.
 
 
@@ -34,9 +34,9 @@ Project source code: [https://github.com/Jarvis-Consulting-Group/jarvis_data_eng
 
 **Junior Software Developer, Jarvis (Feb 2023 - present)**: Worked in an Agile/Scrum development environment and developed the product based on the agile framework guidelines. Collaborated with the development team to discuss and deliver software solutions to our customers. Gained valuable experience from working on various software development projects in a professional work setting. Worked with practical technologies that are used in the industry, such as CentOS, Docker, PostgreSQL, Java, Spring Boot, etc.
 
-**Software Developer Intern, Poros Consulting (Feb 2022 - Jul 2022)**: Developed a web application for visualizing top companies?¡¥ information. Utilized Python libraries, including Request and BeautifulSoup, to fetch data from reliable financial webpages. Effectively using commercial finance APIs to get financial news related to top companies. Designed the MySQL database schema. Created maintainable components capable of updating data in MySQL databases on a daily basis. Realized data visualization using Echarts.js and implemented backend RESTful APIs using Django.
+**Software Developer Intern, Poros Consulting (Feb 2022 - Jul 2022)**: Developed a web application for visualizing information of top companies. Utilized Python libraries, including Request and BeautifulSoup, to fetch data from reliable financial webpages. Effectively using commercial finance APIs to get financial news related to top companies. Designed the MySQL database schema. Created maintainable components capable of updating data in MySQL databases on a daily basis. Realized data visualization using Echarts.js and implemented backend RESTful APIs using Django.
 
-**Java Developer Intern, INFINITE, Guangzhou, China (Jun 2018 - Aug 2018)**: Developed a part of a job board website. Implemented multiple RESTful APIs using Java. Used HTML, CSS, and AJAX to develop multiple dynamic front-end pages for showing job details. Used SQL to query the MySQL database for the front-end page's desired data. Utilized JUnit for automated testing, test coverage is approximately 70%.
+**Java Developer Intern, INFINITE, Guangzhou, China (Jun 2018 - Aug 2018)**: Contributed to the development of a job board website by building a key module. Designed and developed multiple RESTful APIs using Java to enable efficient communication between front-end and back-end systems. Boosted the efficiency of data retrieval by utilizing SQL to query the MySQL database and retrieve only the necessary data for front-end pages. Ensured high-quality code by utilizing JUnit for automated testing, resulting in approximately 70% test coverage and reliable functionality.
 
 
 ## Education
