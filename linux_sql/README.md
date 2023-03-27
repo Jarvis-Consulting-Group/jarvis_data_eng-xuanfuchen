@@ -173,6 +173,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
 
 	      # check if there is a container named 'jrvs-psql' running
 	      docker container ls -a -f name=jrvs-psql
+	      
 	     As a result, you should see a table like the one below:
 
       | CONTAINER ID | IMAGE | COMMAND  | CREATED  | STATUS  | PORTS  | NAMES  |
@@ -186,7 +187,6 @@ As there were not many repetitive tasks in the testing process, I manually teste
 
 	      # check if there is a container named 'jrvs-psql' running
 	      docker container ls -a -f name=jrvs-psql
-	     As result, you should see a table like below.
 
 	As a result, you shouldn't see any thing in the table anymore.
 
@@ -241,7 +241,7 @@ As there were not many repetitive tasks in the testing process, I manually teste
 	As a result, you should see a table with 5 records whose times should be 5 consecutive minutes.
 
 ## Deployment
-The app was deployed using Crontab on a cloud machine running CentOS 7. If you want to deploy it on your own machine, please follow the [Quick Start](https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen/tree/develop/linux_sql#quick-start) guide above.
+The app was deployed using Crontab on a cloud machine running CentOS 7. If you want to deploy it on your own machine, please follow the [Quick Start](#quick-start) guide above.
 
 ## Improvements
 
