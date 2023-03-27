@@ -99,10 +99,6 @@ public class Customer implements DataTransferObject {
         this.zipCode = zipCode;
     }
 
-    public void print(){
-        System.out.println(this.toString());
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
