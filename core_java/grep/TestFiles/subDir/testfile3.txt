@@ -1,0 +1,5 @@
+Line 1 in file 3.
+Line 2 in file 3.
+Line 3 in file 3.
+Line 4 in file 3.
+Line 5 in file 3.
