@@ -1,6 +1,7 @@
 import ca.jrvs.apps.grep.JavaGrepImp;
 import org.junit.Test;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,14 +66,22 @@ public class GrepTester {
     }
 
     @Test
-    public void testWriteToFile(){
+    public void testWriteToFile() throws IOException {
         JavaGrepImp grep = new JavaGrepImp();
         grep.setOutFile(ROOT_DIR + "/testOutput.txt");
-        List<String> lines = new ArrayList<>();
-        lines.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
-        lines.add("Nullam quis ante dignissim, ullamcorper lorem non, consequat urna.");
-        lines.add("Duis vitae sem non odio ultricies dignissim.");
-        lines.add("Suspendisse euismod eros ac nisi vestibulum, eu hendrerit sem hendrerit.");
-        lines.add("Phasellus vestibulum libero vel eros commodo, vel ultricies mi aliquet.");
+        List<String> expected = new ArrayList<>();
+        expected.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        expected.add("Nullam quis ante dignissim, ullamcorper lorem non, consequat urna.");
+        expected.add("Duis vitae sem non odio ultricies dignissim.");
+        expected.add("Suspendisse euismod eros ac nisi vestibulum, eu hendrerit sem hendrerit.");
+        expected.add("Phasellus vestibulum libero vel eros commodo, vel ultricies mi aliquet.");
+
+        grep.writeToFile(expected);
+        File out = new File(ROOT_DIR + "/testOutput.txt");
+        List<String> actual = grep.readLines(out);
+
+        assertTrue(actual.equals(expected));
+
+        out.delete();
     }
 }
