@@ -13,7 +13,7 @@ public interface JavaGrep {
 
     /**
      * Travers a giving directory and return all files
-     * @param rootDir input difrectory
+     * @param rootDir input directory
      * @return files under the rootDir
      */
     List<File> listFiles(String rootDir);
