@@ -2,6 +2,7 @@ import ca.jrvs.apps.grep.JavaGrepImp;
 import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,9 @@ import static org.junit.Assert.assertTrue;
 
 public class GrepTester {
     private static final String ROOT_DIR = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/TestFiles";
+
+
+
     @Test
     public void testListFiles(){
         JavaGrepImp grep = new JavaGrepImp();
@@ -83,5 +87,51 @@ public class GrepTester {
         assertTrue(actual.equals(expected));
 
         out.delete();
+    }
+
+    @Test
+    public void testProcess() throws IOException{
+        JavaGrepImp grep = new JavaGrepImp();
+        String expectedOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/expected.txt";
+        String actualOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/actual.txt";
+
+        grep.setRegex(".*Romeo.*Juliet.*");
+        grep.setRootPath("/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/txt");
+        grep.setOutFile(actualOutputPath);
+        //delete the output file if it already exists
+        File output = new File(actualOutputPath);
+        if(output.exists()){
+            output.delete();
+        }
+        //execute the function
+        grep.process();
+
+        //built the contents of expected file and output file as two Strings, then compare them
+        File expectedFile = new File(expectedOutputPath);
+        String actual = new String(Files.readAllBytes(output.toPath()));
+        String expected = new String(Files.readAllBytes(expectedFile.toPath()));
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testMainMethod() throws IOException {
+        String expectedOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/expected.txt";
+        String actualOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/actual.txt";
+
+        String[] args = {".*Romeo.*Juliet.*",
+                "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/txt",
+                actualOutputPath};
+        //delete the output file if it already exists
+        File actualOutput = new File(actualOutputPath);
+        if(actualOutput.exists()){
+            actualOutput.delete();
+        }
+
+        JavaGrepImp.main(args);
+
+        File expectedFile = new File(expectedOutputPath);
+        String actual = new String(Files.readAllBytes(actualOutput.toPath()));
+        String expected = new String(Files.readAllBytes(expectedFile.toPath()));
+        assertEquals(actual, expected);
     }
 }

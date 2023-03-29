@@ -6,15 +6,15 @@ import org.apache.logging.log4j.core.config.DefaultConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JavaGrepImp implements JavaGrep{
-    final Logger logger = LoggerFactory.getLogger(JavaGrep.class);
-
+    static final Logger logger = LoggerFactory.getLogger(JavaGrep.class);
     private String regex;
     private String rootPath;
     private String outFile;
@@ -26,17 +26,21 @@ public class JavaGrepImp implements JavaGrep{
 
         Configurator.initialize(new DefaultConfiguration());
         //Set log level to: ERROR, WARN, INFO, DEBUG, or ALL
-        Configurator.setRootLevel(Level.ERROR);
+        Configurator.setRootLevel(Level.INFO);
 
         JavaGrepImp javaGrepImp = new JavaGrepImp();
         javaGrepImp.setRegex(args[0]);
         javaGrepImp.setRootPath(args[1]);
         javaGrepImp.setOutFile(args[2]);
 
+        logger.info("Regex: " + javaGrepImp.getRegex());
+        logger.info("RootPath: " + javaGrepImp.getRootPath());
+        logger.info("OutfilePath: " + javaGrepImp.getOutFile());
+
         try {
             javaGrepImp.process();
-        } catch (Exception ex) {
-            javaGrepImp.logger.error("Error: Unable to process", ex);
+        } catch (Exception e) {
+            javaGrepImp.logger.error("Error: Unable to process", e);
         }
     }
 
@@ -44,16 +48,21 @@ public class JavaGrepImp implements JavaGrep{
     public void process() throws IOException {
         LinkedList<String> matchedLines = new LinkedList<>();
         List<File> fileList = listFiles(this.getRootPath());
+        int count = 0;
 
+        logger.info("Processing...");
         for(File file: fileList){
             List<String> lines = readLines(file);
             for(String line: lines){
                 if(containsPattern(line)){
                     matchedLines.addLast(line);
+                    count++;
                 }
             }
         }
+        logger.info("Creating output file.");
         writeToFile(matchedLines);
+        logger.info("Complete! " + count + " matched" + (count == 1 ? " line" : " lines"));
     }
 
     /**
@@ -77,6 +86,7 @@ public class JavaGrepImp implements JavaGrep{
                 }
             }
         }
+
         return files;
     }
 
@@ -88,15 +98,12 @@ public class JavaGrepImp implements JavaGrep{
     @Override
     public List<String> readLines(File inputFile) {
         //linked list for storing all lines from the file, and add it to the end efficiently
-        LinkedList<String> lines = new LinkedList<>();
+        List<String> lines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             //Use try-with-resources to automatically close the buffered reader
-            String line = reader.readLine();
-            while(line != null){
-                lines.addLast(line);
-                line = reader.readLine();
-            }
+            lines = reader.lines()
+                    .collect(Collectors.toList());
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -126,11 +133,9 @@ public class JavaGrepImp implements JavaGrep{
             output.createNewFile();
         }
 
-        //create a writer to write lines into the output file
+        //write lines into the output file
         PrintWriter writer = new PrintWriter(output);
-        for(String line: lines){
-            writer.println(line);
-        }
+        Files.write(output.toPath(), lines);
         //close the writer
         writer.close();
     }
