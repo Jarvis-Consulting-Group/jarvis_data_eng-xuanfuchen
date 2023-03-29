@@ -1,6 +1,10 @@
 # IntelliJ IDEA generated files
-.idea/
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
 *.iml
-*.ipr
-*.iws
-out/
+.idea/
+.eclipse
