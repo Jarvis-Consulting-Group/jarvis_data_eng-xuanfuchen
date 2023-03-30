@@ -88,11 +88,11 @@ public class GrepStreamImpTester {
     @Test
     public void testProcess() throws IOException{
         JavaGrepStreamImp grepStream = new JavaGrepStreamImp();
-        String expectedOutputPath = "data/expected.txt";
-        String actualOutputPath = "data/actual.txt";
+        String expectedOutputPath = "output/expected.txt";
+        String actualOutputPath = "output/actual.txt";
 
         grepStream.setRegex(".*Romeo.*Juliet.*");
-        grepStream.setRootPath("data/txt");
+        grepStream.setRootPath("data/");
         grepStream.setOutFile(actualOutputPath);
         //delete the output file if it already exists
         File output = new File(actualOutputPath);
@@ -111,11 +111,11 @@ public class GrepStreamImpTester {
 
     @Test
     public void testMainMethod() throws IOException {
-        String expectedOutputPath = "data/expected.txt";
-        String actualOutputPath = "data/actual.txt";
+        String expectedOutputPath = "output/expected.txt";
+        String actualOutputPath = "output/actual.txt";
 
         String[] args = {".*Romeo.*Juliet.*",
-                "data/txt",
+                "data/",
                 actualOutputPath};
         //delete the output file if it already exists
         File actualOutput = new File(actualOutputPath);
