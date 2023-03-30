@@ -12,26 +12,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class GrepTester {
-    private static final String ROOT_DIR = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/TestFiles";
-
-
-
     @Test
     public void testListFiles(){
         JavaGrepImp grep = new JavaGrepImp();
-        List<File> files = grep.listFiles(ROOT_DIR);
+        List<File> files = grep.listFiles("TestFiles/");
 
         // Check that all expected files are included in the list
         assertEquals(3, files.size());
-        assertTrue(files.contains(new File(ROOT_DIR + "/testfile1.txt")));
-        assertTrue(files.contains(new File(ROOT_DIR + "/testfile2.txt")));
-        assertTrue(files.contains(new File(ROOT_DIR + "/subDir/testfile3.txt")));
+        assertTrue(files.contains(new File("TestFiles/testfile1.txt")));
+        assertTrue(files.contains(new File("TestFiles/testfile2.txt")));
+        assertTrue(files.contains(new File("TestFiles/subDir/testfile3.txt")));
     }
 
     @Test
     public void testReadLines(){
         JavaGrepImp grep = new JavaGrepImp();
-        List<File> files = grep.listFiles(ROOT_DIR);
+        List<File> files = grep.listFiles("TestFiles/");
         List<String> lines = new ArrayList<>();
         for(File file: files){
             lines.addAll(grep.readLines(file));
@@ -72,7 +68,7 @@ public class GrepTester {
     @Test
     public void testWriteToFile() throws IOException {
         JavaGrepImp grep = new JavaGrepImp();
-        grep.setOutFile(ROOT_DIR + "/testOutput.txt");
+        grep.setOutFile("TestFiles/testOutput.txt");
         List<String> expected = new ArrayList<>();
         expected.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
         expected.add("Nullam quis ante dignissim, ullamcorper lorem non, consequat urna.");
@@ -81,7 +77,7 @@ public class GrepTester {
         expected.add("Phasellus vestibulum libero vel eros commodo, vel ultricies mi aliquet.");
 
         grep.writeToFile(expected);
-        File out = new File(ROOT_DIR + "/testOutput.txt");
+        File out = new File("TestFiles/testOutput.txt");
         List<String> actual = grep.readLines(out);
 
         assertTrue(actual.equals(expected));
@@ -92,11 +88,11 @@ public class GrepTester {
     @Test
     public void testProcess() throws IOException{
         JavaGrepImp grep = new JavaGrepImp();
-        String expectedOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/expected.txt";
-        String actualOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/actual.txt";
+        String expectedOutputPath = "data/expected.txt";
+        String actualOutputPath = "data/actual.txt";
 
         grep.setRegex(".*Romeo.*Juliet.*");
-        grep.setRootPath("/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/txt");
+        grep.setRootPath("data/txt");
         grep.setOutFile(actualOutputPath);
         //delete the output file if it already exists
         File output = new File(actualOutputPath);
@@ -115,11 +111,11 @@ public class GrepTester {
 
     @Test
     public void testMainMethod() throws IOException {
-        String expectedOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/expected.txt";
-        String actualOutputPath = "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/actual.txt";
+        String expectedOutputPath = "data/expected.txt";
+        String actualOutputPath = "data/actual.txt";
 
         String[] args = {".*Romeo.*Juliet.*",
-                "/home/centos/dev/jarvis_data_eng_xuanfu/core_java/grep/data/txt",
+                "data/txt",
                 actualOutputPath};
         //delete the output file if it already exists
         File actualOutput = new File(actualOutputPath);

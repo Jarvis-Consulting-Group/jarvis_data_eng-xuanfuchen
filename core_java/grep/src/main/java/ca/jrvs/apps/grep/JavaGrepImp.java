@@ -82,7 +82,7 @@ public class JavaGrepImp implements JavaGrep{
                 if(file.isFile()){
                     files.add(file);
                 } else if(file.isDirectory()) {
-                    files.addAll(listFiles(file.getAbsolutePath()));
+                    files.addAll(listFiles(file.getPath()));
                 }
             }
         }
