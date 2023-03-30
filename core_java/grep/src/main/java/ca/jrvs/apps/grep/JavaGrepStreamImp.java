@@ -5,10 +5,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.logging.log4j.core.config.DefaultConfiguration;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.nio.file.Files;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -68,13 +66,11 @@ public class JavaGrepStreamImp extends JavaGrepImp{
      */
     @Override
     public List<File> listFiles(String rootDir) {
-        List<File> files = new ArrayList<>();
         File directory = new File(rootDir);
-
         File[] fileList = directory.listFiles();
 
         if(fileList != null){
-            files = Arrays.stream(fileList)
+            return Arrays.stream(fileList)
                     .flatMap(file -> { //we need to flatten the stream because subdir might create stream of streams.
                         if (file.isFile()){
                             return Stream.of(file);  //return type must be a stream
@@ -86,7 +82,7 @@ public class JavaGrepStreamImp extends JavaGrepImp{
                     })
                     .collect(Collectors.toList());
         }
-        return files;
+        return Collections.emptyList();
     }
 
     /**
@@ -96,16 +92,12 @@ public class JavaGrepStreamImp extends JavaGrepImp{
      */
     @Override
     public List<String> readLines(File inputFile) {
-        //linked list for storing all lines from the file, and add it to the end efficiently
-        List<String> lines = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
-            //Use try-with-resources to automatically close the buffered reader
-            lines = reader.lines()
-                    .collect(Collectors.toList());
-        } catch (IOException e){
+        try {
+            return Files.lines(inputFile.toPath())
+                        .collect(Collectors.toList());
+        } catch (IOException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
-        return lines;
     }
 }
