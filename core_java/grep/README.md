@@ -1,7 +1,7 @@
 # Introduction
 - What does this project do?  
-  This project is a Java 8 Mave-based Application that allows users to search for the occurrence of a string pattern in all files under a directory and save as an output file. The application provides two different implementations for searching the lines in files: one using traditional for loops and another using Java 8 Stream/Lambda functions. The Stream/Lambda implementation provides better performance than the for loop implementation. The application is deployed on the Docker Hub for ease of distribution and can be easily accessed from any machine with Docker installed. This project is useful for anyone who needs to search for texts that contain specific patterns in large numbers of files quickly and efficiently.
-- Technologies
+This project is a Java 8 Mave-based Application that allows users to search for the occurrence of a string pattern in all files under a directory and save as an output file. The application provides two different implementations for searching the lines in files: one using traditional for loops and another using Java 8 Stream/Lambda functions. The Stream/Lambda implementation provides better performance than the for loop implementation. The application is deployed on the Docker Hub for ease of distribution and can be easily accessed from any machine with Docker installed. This project is useful for anyone who needs to search for texts that contain specific patterns in large numbers of files quickly and efficiently.
+- Technologies  
     - Java 8
     - Maven
     - Java Streams/Lambda Functions
@@ -32,7 +32,7 @@
     - Run `main` functions inside the implementations of JavaGrep interface.
 
 # Implemenation
-The App contains 1 interface:
+The App contains 1 interface: 
 - JavaGrep
 
 And two implementations of JavaGrep interface:
@@ -60,7 +60,7 @@ Some possible solutions:
 
 # Test
 I implemented two JUnit classes to test the program because I wanted a systematic and repeatable way to test my program during my development process.  
-Two JUnit classes are for testing two implementations separately. The coverage is 94% and 84% on JavaGrepImp and JavaGrepStreamImp, respectively.
+Two JUnit classes are for testing two implementations separately. I wrote JUnit test for each method in both cases to make sure each method are working as expected. To test each method, I first compare its actual output to the actual data in the "TestFile," and then I compare the actual output of main function to the output of the Linux `grep` command to see if they are identical. The coverage is 94% and 84% on JavaGrepImp and JavaGrepStreamImp, respectively.
 
 # Deployment
 This app is deployed on Docker Hub for easier distribution. Any computer that has Docker installed is able to run this app.
