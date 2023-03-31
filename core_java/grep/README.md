@@ -60,7 +60,7 @@ Some possible solutions:
 
 # Test
 I implemented two JUnit classes to test the program because I wanted a systematic and repeatable way to test my program during my development process.  
-Two JUnit classes are for testing two implementations separately. I wrote JUnit test for each method in both cases to make sure each method are working as expected. To test each method, I first compare its actual output to the actual data in the "TestFile," and then I compare the actual output of main function to the output of the Linux `grep` command to see if they are identical. The coverage is 94% and 84% on JavaGrepImp and JavaGrepStreamImp, respectively.
+Two JUnit classes are for testing two implementations separately. I wrote a JUnit test case for each method in both cases to make sure each method was working as expected. To test each method, I first compare its actual output to the actual data in the "TestFile," and then I compare the actual output of the main function to the output of the Linux `grep` command to see if they are identical. The coverage is 94% and 84% on JavaGrepImp and JavaGrepStreamImp, respectively.
 
 # Deployment
 This app is deployed on Docker Hub for easier distribution. Any computer that has Docker installed is able to run this app.
