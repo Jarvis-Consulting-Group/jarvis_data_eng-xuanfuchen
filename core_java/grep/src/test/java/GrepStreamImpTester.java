@@ -12,22 +12,23 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class GrepStreamImpTester {
+    public final static String TEST_DIR = "src/test/resources";
     @Test
     public void testListFiles(){
         JavaGrepStreamImp grepStream = new JavaGrepStreamImp();
-        List<File> files = grepStream.listFiles("TestFiles/");
+        List<File> files = grepStream.listFiles(TEST_DIR + "/TestFiles");
 
         // Check that all expected files are included in the list
         assertEquals(3, files.size());
-        assertTrue(files.contains(new File("TestFiles/testfile1.txt")));
-        assertTrue(files.contains(new File("TestFiles/testfile2.txt")));
-        assertTrue(files.contains(new File("TestFiles/subDir/testfile3.txt")));
+        assertTrue(files.contains(new File(TEST_DIR + "/TestFiles/testfile1.txt")));
+        assertTrue(files.contains(new File(TEST_DIR + "/TestFiles/testfile2.txt")));
+        assertTrue(files.contains(new File(TEST_DIR + "/TestFiles/subDir/testfile3.txt")));
     }
 
     @Test
     public void testReadLines(){
         JavaGrepStreamImp grepStream = new JavaGrepStreamImp();
-        List<File> files = grepStream.listFiles("TestFiles/");
+        List<File> files = grepStream.listFiles(TEST_DIR + "/TestFiles");
         List<String> lines = new ArrayList<>();
         for(File file: files){
             lines.addAll(grepStream.readLines(file));
@@ -68,7 +69,7 @@ public class GrepStreamImpTester {
     @Test
     public void testWriteToFile() throws IOException {
         JavaGrepStreamImp grepStream = new JavaGrepStreamImp();
-        grepStream.setOutFile("TestFiles/testOutput.txt");
+        grepStream.setOutFile(TEST_DIR + "/testOutput.txt");
         List<String> expected = new ArrayList<>();
         expected.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
         expected.add("Nullam quis ante dignissim, ullamcorper lorem non, consequat urna.");
@@ -77,7 +78,7 @@ public class GrepStreamImpTester {
         expected.add("Phasellus vestibulum libero vel eros commodo, vel ultricies mi aliquet.");
 
         grepStream.writeToFile(expected);
-        File out = new File("TestFiles/testOutput.txt");
+        File out = new File(TEST_DIR + "/testOutput.txt");
         List<String> actual = grepStream.readLines(out);
 
         assertTrue(actual.equals(expected));
@@ -88,8 +89,8 @@ public class GrepStreamImpTester {
     @Test
     public void testProcess() throws IOException{
         JavaGrepStreamImp grepStream = new JavaGrepStreamImp();
-        String expectedOutputPath = "output/expected.txt";
-        String actualOutputPath = "output/actual.txt";
+        String expectedOutputPath = TEST_DIR + "/output/expected.txt";
+        String actualOutputPath = TEST_DIR + "/output/actual.txt";
 
         grepStream.setRegex(".*Romeo.*Juliet.*");
         grepStream.setRootPath("data/");
@@ -111,8 +112,8 @@ public class GrepStreamImpTester {
 
     @Test
     public void testMainMethod() throws IOException {
-        String expectedOutputPath = "output/expected.txt";
-        String actualOutputPath = "output/actual.txt";
+        String expectedOutputPath = TEST_DIR + "/output/expected.txt";
+        String actualOutputPath = TEST_DIR + "/output/actual.txt";
 
         String[] args = {".*Romeo.*Juliet.*",
                 "data/",
