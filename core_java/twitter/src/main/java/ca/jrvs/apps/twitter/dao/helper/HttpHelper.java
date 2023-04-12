@@ -8,10 +8,11 @@ public interface HttpHelper {
 
     /**
      * Execute a HTTP Post call
-     * @param uri
-     * @return
+     * @param uri the API URL
+     * @param s additional Json file
+     * @return HttpResponse for the request
      */
-    HttpResponse httpPost(URI uri);
+    HttpResponse httpPost(URI uri, String s);
 
     /**
      * Execute a HTTP Get call

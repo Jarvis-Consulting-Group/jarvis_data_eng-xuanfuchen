@@ -1,12 +1,9 @@
 package ca.jrvs.apps.twitter.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Data {
     private String id;
     private String text;
