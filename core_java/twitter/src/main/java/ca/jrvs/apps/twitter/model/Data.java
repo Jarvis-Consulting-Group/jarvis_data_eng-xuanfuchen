@@ -7,9 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties({
-        "edit_history_tweet_ids"
-})
 public class Data {
     private String id;
     private String text;

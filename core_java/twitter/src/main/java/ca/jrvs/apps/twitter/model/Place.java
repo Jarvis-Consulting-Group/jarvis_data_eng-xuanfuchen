@@ -5,11 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties({
-        "country_code",
-        "id",
-        "place_type"
-})
 public class Place {
     private Geo geo;
     private String name;

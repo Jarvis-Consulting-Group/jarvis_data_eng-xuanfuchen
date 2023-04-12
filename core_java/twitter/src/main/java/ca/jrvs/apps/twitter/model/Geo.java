@@ -6,9 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Arrays;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties({
-        "properties"
-})
 public class Geo {
     private String type;
     double[] bbox;
