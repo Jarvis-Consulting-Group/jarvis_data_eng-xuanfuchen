@@ -28,7 +28,7 @@ public class TwitterDaoUnitTest {
         //Test if the exceptions are handled
         when(mockHelper.httpGet(isNotNull())).thenThrow(new RuntimeException("mock"));
         try {
-            twitterDao.findById("1629865830337990656");
+            twitterDao.findById("1212092628029698048");
             fail();
         } catch (RuntimeException e) {
             assertTrue(true);
@@ -40,7 +40,7 @@ public class TwitterDaoUnitTest {
         Tweet expectedTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
         //return the expectedTweet directly when parseResponseBody is called by any arguments
         doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
-        Tweet tweet = spyDao.findById("1629865830337990656");
+        Tweet tweet = spyDao.findById("1212092628029698048");
 
         assertNotNull(tweet);
         assertNotNull(tweet.getData().getText());
@@ -51,19 +51,19 @@ public class TwitterDaoUnitTest {
         //Test if the exceptions are handled
         when(mockHelper.httpGet(isNotNull())).thenThrow(new RuntimeException("mock"));
         try {
-            twitterDao.findById("1629865830337990656");
+            twitterDao.findById("1212092628029698048");
             fail();
         } catch (RuntimeException e) {
             assertTrue(true);
         }
 
         //mock the httpHelper and return null when httpGet is called with any not null argument
-        when(mockHelper.httpGet(isNotNull())).thenReturn(null);
+        when(mockHelper.httpDelete(isNotNull())).thenReturn(null);
         TwitterDao spyDao = Mockito.spy(twitterDao);
         Tweet expectedTweet = JsonUtil.toObjectFromJson(deleteTweetResponse, Tweet.class);
         //return the expectedTweet directly when parseResponseBody is called by any arguments
         doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
-        Tweet tweet = spyDao.deleteById("1629865830337990656");
+        Tweet tweet = spyDao.deleteById("1212092628029698048");
 
         assertNotNull(tweet);
         assertTrue(tweet.getData().getDeleted());
@@ -71,11 +71,8 @@ public class TwitterDaoUnitTest {
 
     @Test
     public void testPostTweet() throws Exception {
-
         Tweet tweet = new Tweet();
-        Data data = new Data();
-        data.setText("Hello World!");
-        tweet.setData(data);
+        tweet.getData().setText("Hello World!");
 
         when(mockHelper.httpPost(isNotNull(), isNotNull())).thenThrow(new RuntimeException("mock"));
         try {
@@ -96,39 +93,22 @@ public class TwitterDaoUnitTest {
         assertNotNull(response.getData().getText());
     }
 
-    private static final String getTweetResponse = "{\n"
-            + "\"data\": {\n"
-            + "     \"id\":\"1629865830337990656\",\n"
-            + "     \"text\":\"@HotForMoot Hey @HotForMoot ??, we've been hard at work developing our new free &amp; basic API tiers. We'll get back to you following the launch. \\n\\nHint: it's coming very soon!\",\n"
-            + "     \"created_at\":\"2023-02-26T15:27:50.000Z\",\n"
-            + "     \"entities\": {\n"
-            + "       \"hashtags\": [{\n"
-            + "         \"start\": 8,\n"
-            + "         \"end\": 13,\n"
-            + "         \"tag\": \"test\"\n"
-            + "       }],\n"
-            + "       \"mentions\": [{\n"
-            + "         \"start\": 0,\n"
-            + "         \"end\": 11,\n"
-            + "         \"username\": \"HotForMoot\",\n"
-            + "         \"id\":\"1519594215352668160\"\n"
-            + "       },\n"
-            + "       {\n"
-            + "         \"start\": 16,\n"
-            + "         \"end\": 27,\n"
-            + "         \"username\": \"HotForMoot\",\n"
-            + "         \"id\":\"1519594215352668160\"\n"
-            + "       }]\n"
-            + "       },\n"
-            + "     \"public_metrics\": {\n"
-            + "       \"retweet_count\": 1,\n"
-            + "       \"reply_count\": 6,\n"
-            + "       \"like_count\": 10,\n"
-            + "       \"quote_count\": 3,\n"
-            + "       \"impression_count\": 3244\n"
-            + "     }\n"
-            + "   }\n"
-            + "}";
+    private static final String getTweetResponse = "{\n" +
+            "  \"data\": {\n" +
+            "    \"edit_history_tweet_ids\": [\n" +
+            "      \"1212092628029698048\"\n" +
+            "    ],\n" +
+            "    \"text\": \"We believe the best future version of our API will come from building it with YOU. Here¡¯s to another great year with everyone who builds on the Twitter platform. We can¡¯t wait to continue working with you in the new year. https://t.co/yvxdK6aOo2\",\n" +
+            "    \"id\": \"1212092628029698048\",\n" +
+            "    \"public_metrics\": {\n" +
+            "      \"retweet_count\": 7,\n" +
+            "      \"reply_count\": 3,\n" +
+            "      \"like_count\": 38,\n" +
+            "      \"quote_count\": 1\n" +
+            "    },\n" +
+            "    \"created_at\": \"2019-12-31T19:26:16.000Z\"\n" +
+            "  }\n" +
+            "}";
     private static final String deleteTweetResponse = "{\n" +
             "  \"data\" : {\n" +
             "    \"deleted\" : true\n" +

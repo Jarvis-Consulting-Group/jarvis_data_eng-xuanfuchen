@@ -6,6 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Tweet {
     private Data data;
 
+    public Tweet() {
+        this.data = new Data();
+    }
+
+    public Tweet(Data data) {
+        this.data = data;
+    }
+
     public Data getData() {
         return data;
     }

@@ -59,8 +59,7 @@ public class TwitterService implements Service{
         Tweet responseTweet = (Tweet) dao.findById(id);
         //in case of fields are specified, create a custom Tweet with those fields only
         Tweet customTweet = new Tweet();
-        Data customData = new Data();
-        customTweet.setData(customData);
+        Data customData = customTweet.getData();
 
         //If the fields are not specified, return the whole response
         if(fields == null) {
@@ -151,8 +150,20 @@ public class TwitterService implements Service{
             //throws IllegalArgumentException if one of the IDs is invalid.
             checkId(id);
 
-            Tweet response = (Tweet) dao.deleteById(id);
-            response.getData().setId(id);
+            Tweet response = null;
+            try {
+                response = (Tweet) dao.deleteById(id);
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e);
+            }
+
+            if(response != null){
+                response.getData().setId(id);
+            } else {
+                response = new Tweet();
+                response.getData().setId(id);
+                response.getData().setText("Did not deleted");
+            }
             tweets.add(response);
         }
         return tweets;
