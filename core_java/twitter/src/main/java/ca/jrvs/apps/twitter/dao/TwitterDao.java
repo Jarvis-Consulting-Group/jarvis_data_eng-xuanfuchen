@@ -33,6 +33,11 @@ public class TwitterDao implements CrdDao<Tweet, String> {
         this.httpHelper = httpHelper;
     }
 
+    /**
+     * Post a tweet on Twitter using HTTP POST Method.
+     * @param tweet entity that to be created
+     * @return response from twitter server
+     */
     @Override
     public Tweet create(Tweet tweet) {
         try {
@@ -43,6 +48,51 @@ public class TwitterDao implements CrdDao<Tweet, String> {
             return parseResponseBody(response, HTTP_CREATED);
         } catch (URISyntaxException e) {
             throw new RuntimeException("Exception occurs when creating URI for create Tweet", e);
+        }
+    }
+
+    /**
+     * Find tweet by ID using Tweet API V2. It is a paid API after 2023-03-29
+     * Using HTTP GET Method
+     * @param id tweet id
+     * @return A Tweet object with specified properties.
+     */
+    @Override
+    public Tweet findById(String id) {
+        //build the API call with fields and expansions:
+        //tweet.fields=created_at,entities,public_metrics&expansions=geo.place_id&place.fields=geo
+        String tweetFields = "created_at,entities,public_metrics";
+        String expansions = "geo.place_id";
+        String placeFields = "geo";
+        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim() + QUERY_SYM +
+                "tweet.fields" + EQUAL + tweetFields + AMPERSAND +
+                "expansions" + EQUAL + expansions + AMPERSAND +
+                "place.fields" + EQUAL + placeFields;
+
+        try {
+            URI uri = new URI(apiCall);
+
+            HttpResponse response = httpHelper.httpGet(uri);
+            return parseResponseBody(response, HTTP_OK);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Exception occurs when creating findById URI", e);
+        }
+    }
+
+    /**
+     * Delete Tweet by ID, using HTTP DELETE method
+     * @param id of the entity to be deleted
+     * @return response from twitter server
+     */
+    @Override
+    public Tweet deleteById(String id) {
+        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim();
+        try {
+            URI uri = new URI(apiCall);
+            HttpResponse response = httpHelper.httpDelete(uri);
+            return parseResponseBody(response, HTTP_OK);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Exception occurs when creating deleteByID URI", e);
         }
     }
 
@@ -85,50 +135,5 @@ public class TwitterDao implements CrdDao<Tweet, String> {
             throw new RuntimeException("Unable to convert JSON to Object", e);
         }
         return tweet;
-    }
-
-    /**
-     * Find tweet by ID using Tweet API V2. It is a paid API after 2023-03-29
-     *
-     * @param id tweet id
-     * @return A Tweet object with specified properties.
-     */
-    @Override
-    public Tweet findById(String id) {
-        //build the API call with fields and expansions:
-        //tweet.fields=created_at,entities,public_metrics&expansions=geo.place_id&place.fields=geo
-        String tweetFields = "created_at,entities,public_metrics";
-        String expansions = "geo.place_id";
-        String placeFields = "geo";
-        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim() + QUERY_SYM +
-                "tweet.fields" + EQUAL + tweetFields + AMPERSAND +
-                "expansions" + EQUAL + expansions + AMPERSAND +
-                "place.fields" + EQUAL + placeFields;
-
-        try {
-            URI uri = new URI(apiCall);
-
-            HttpResponse response = httpHelper.httpGet(uri);
-            return parseResponseBody(response, HTTP_OK);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("Exception occurs when creating findById URI", e);
-        }
-    }
-
-    /**
-     * Delete Tweet by ID
-     * @param id of the entity to be deleted
-     * @return
-     */
-    @Override
-    public Tweet deleteById(String id) {
-        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim();
-        try {
-            URI uri = new URI(apiCall);
-            HttpResponse response = httpHelper.httpDelete(uri);
-            return parseResponseBody(response, HTTP_OK);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("Exception occurs when creating deleteByID URI", e);
-        }
     }
 }
