@@ -22,8 +22,10 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     private static final String AMPERSAND = "&";
     private static final String EQUAL = "=";
 
-    //Status Codes
-    private static final Integer CREATE_SUCCESS = 201;
+    //HTTP Status Codes
+    private static final Integer HTTP_CREATED = 201;
+    private static final Integer HTTP_OK = 200;
+
     private HttpHelper httpHelper;
 
     @Autowired
@@ -33,17 +35,14 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
     @Override
     public Tweet create(Tweet tweet) {
-        Tweet validTweet = null;
-
         try {
             URI uri = new URI(API_BASE_URI + V2_PATH_TWEETS);
             //build JSON style string for request body: {"text": "<tweet_content>"}
             String s = "{\"text\": \"" + tweet.getData().getText() + "\"}";
             HttpResponse response = httpHelper.httpPost(uri, s);
-            validTweet = parseResponseBody(response, CREATE_SUCCESS);
-            return validTweet;
+            return parseResponseBody(response, HTTP_CREATED);
         } catch (URISyntaxException e) {
-            throw new RuntimeException("Exception:", e);
+            throw new RuntimeException("Exception occurs when creating URI for create Tweet", e);
         }
     }
 
@@ -85,17 +84,51 @@ public class TwitterDao implements CrdDao<Tweet, String> {
         } catch (IOException e) {
             throw new RuntimeException("Unable to convert JSON to Object", e);
         }
-
         return tweet;
     }
 
+    /**
+     * Find tweet by ID using Tweet API V2. It is a paid API after 2023-03-29
+     *
+     * @param id tweet id
+     * @return A Tweet object with specified properties.
+     */
     @Override
-    public Tweet findById(String s) {
-        return null;
+    public Tweet findById(String id) {
+        //build the API call with fields and expansions:
+        //tweet.fields=created_at,entities,public_metrics&expansions=geo.place_id&place.fields=geo
+        String tweetFields = "created_at,entities,public_metrics";
+        String expansions = "geo.place_id";
+        String placeFields = "geo";
+        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim() + QUERY_SYM +
+                "tweet.fields" + EQUAL + tweetFields + AMPERSAND +
+                "expansions" + EQUAL + expansions + AMPERSAND +
+                "place.fields" + EQUAL + placeFields;
+
+        try {
+            URI uri = new URI(apiCall);
+
+            HttpResponse response = httpHelper.httpGet(uri);
+            return parseResponseBody(response, HTTP_OK);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Exception occurs when creating findById URI", e);
+        }
     }
 
+    /**
+     * Delete Tweet by ID
+     * @param id of the entity to be deleted
+     * @return
+     */
     @Override
-    public Tweet deleteById(String s) {
-        return null;
+    public Tweet deleteById(String id) {
+        String apiCall = API_BASE_URI + V2_PATH_TWEETS + "/" + id.trim();
+        try {
+            URI uri = new URI(apiCall);
+            HttpResponse response = httpHelper.httpDelete(uri);
+            return parseResponseBody(response, HTTP_OK);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Exception occurs when creating deleteByID URI", e);
+        }
     }
 }

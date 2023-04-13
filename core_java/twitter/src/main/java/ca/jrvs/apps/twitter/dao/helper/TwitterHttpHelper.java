@@ -6,6 +6,7 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.exception.OAuthException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -37,7 +38,7 @@ public class TwitterHttpHelper implements HttpHelper{
 
             return execute(httpPost);
         } catch (OAuthException | IOException e) {
-            throw new RuntimeException("Exception", e);
+            throw new RuntimeException("Exception occurs when executing httpPost", e);
         }
     }
 
@@ -52,7 +53,17 @@ public class TwitterHttpHelper implements HttpHelper{
             HttpGet httpGet = new HttpGet(uri);
             return execute(httpGet);
         } catch (OAuthException | IOException e){
-            throw new RuntimeException("Exception", e);
+            throw new RuntimeException("Exception occurs when executing httpGet", e);
+        }
+    }
+
+    @Override
+    public HttpResponse httpDelete(URI uri) {
+        try {
+            HttpDelete httpDelete = new HttpDelete(uri);
+            return execute(httpDelete);
+        } catch (OAuthException | IOException e) {
+            throw new RuntimeException("Exception occurs when executing httpDelete", e);
         }
     }
 
