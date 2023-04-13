@@ -26,9 +26,9 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     private static final Integer HTTP_CREATED = 201;
     private static final Integer HTTP_OK = 200;
 
+    @Autowired
     private HttpHelper httpHelper;
 
-    @Autowired
     public TwitterDao(HttpHelper httpHelper){
         this.httpHelper = httpHelper;
     }
@@ -102,7 +102,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
      * @param expectedStatusCode
      * @return validated Tweet object that contains values from the HttpResponse
      */
-    private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode){
+    public Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode){
         Tweet tweet = null;
 
         //Check response status

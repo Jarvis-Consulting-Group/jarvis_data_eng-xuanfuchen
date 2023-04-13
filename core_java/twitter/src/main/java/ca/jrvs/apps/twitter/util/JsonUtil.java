@@ -2,6 +2,7 @@ package ca.jrvs.apps.twitter.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -40,8 +41,7 @@ public class JsonUtil {
     public static <T> T toObjectFromJson(String json, Class clazz)
             throws IOException {
         ObjectMapper m = new ObjectMapper();
+        m.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         return (T) m.readValue(json, clazz);
     }
-
-
 }

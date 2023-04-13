@@ -1,8 +1,10 @@
 package ca.jrvs.apps.twitter.model;
 
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Arrays;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Geo {
     private String type;
     double[] bbox;

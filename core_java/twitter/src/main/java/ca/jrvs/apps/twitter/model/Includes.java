@@ -1,7 +1,9 @@
 package ca.jrvs.apps.twitter.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Includes {
     private List<Place> places;
 

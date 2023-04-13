@@ -1,7 +1,8 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PublicMetrics {
     @JsonProperty("retweet_count")
     private Integer retweetCount;

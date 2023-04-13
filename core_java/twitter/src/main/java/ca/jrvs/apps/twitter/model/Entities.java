@@ -1,6 +1,9 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Entities {
     private List<UserMention> mentions;
     private List<Hashtag> hashtags;
