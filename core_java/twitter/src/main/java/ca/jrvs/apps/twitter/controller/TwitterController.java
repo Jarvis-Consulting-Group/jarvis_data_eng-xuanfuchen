@@ -36,7 +36,7 @@ public class TwitterController implements Controller{
 
     @Override
     public Tweet showTweet(String[] args) {
-        if(args.length != 2 || args.length != 3){
+        if(args.length != 2 && args.length != 3){
             throw new IllegalArgumentException(
                     "Invalid number of argument. USAGE: TwitterCLIApp show \"tweet_id\" " +
                             "OPTIONAL:\"tweet_fields_separated_by_comma\"");

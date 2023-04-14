@@ -74,6 +74,8 @@ public class TwitterService implements Service{
                     case "text":
                         customData.setText(responseData.getText());
                         break;
+                    case "created_at":
+                        customData.setCreatedAt(responseData.getCreatedAt());
                     case "entities":
                         customData.setEntities(responseData.getEntities());
                         break;
@@ -105,12 +107,14 @@ public class TwitterService implements Service{
                         break;
                     case "text":
                         break;
+                    case "created_at":
+                        break;
                     case "entities":
                         break;
                     case "public_metrics":
                         break;
                     default:
-                        throw new IllegalArgumentException("Fields can only contain id, text, entities, and public_metrics");
+                        throw new IllegalArgumentException("Fields can only contain id, text, created_at, entities, and public_metrics");
                 }
             }
         }

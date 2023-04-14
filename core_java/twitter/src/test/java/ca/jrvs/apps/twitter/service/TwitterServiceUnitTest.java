@@ -71,8 +71,6 @@ public class TwitterServiceUnitTest {
         String invalidString = sb.toString();
         Tweet tweet = new Tweet();
         tweet.getData().setText(invalidString);
-        // Set up the mockDao to return the mock Tweet object when create() is called
-        when(mockDao.create(any())).thenReturn(mockTweet);
         TwitterService spyService = Mockito.spy(twitterService);
         spyService.postTweet(tweet);
     }
@@ -82,7 +80,7 @@ public class TwitterServiceUnitTest {
         //test exception handling
         when(mockDao.findById(isNotNull())).thenThrow(new RuntimeException("mock"));
         try {
-            twitterService.showTweet("1629865830337990656", null);
+            twitterService.showTweet("1212092628029698048", null);
             fail();
         } catch (RuntimeException | AssertionError e) {
             assertTrue(true);
@@ -92,7 +90,7 @@ public class TwitterServiceUnitTest {
         Tweet mockTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
 
         when(mockDao.findById(any())).thenReturn(mockTweet);
-        Tweet tweet = spyService.showTweet("1629865830337990656", null);
+        Tweet tweet = spyService.showTweet("1212092628029698048", null);
 
         assertNotNull(tweet);
         assertNotNull(tweet.getData().getText());
@@ -100,16 +98,15 @@ public class TwitterServiceUnitTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidFields() throws IOException {
-        String id = "1629865830337990656";
+        String id = "1212092628029698048";
         String[] fields = {"id", "invalidField"};
         Tweet mockTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
-        when(mockDao.findById(any())).thenReturn(mockTweet);
         twitterService.showTweet(id, fields);
     }
 
     @Test
     public void testDeleteTweets() throws Exception {
-        String[] ids = {"1629865830337990656"};
+        String[] ids = {"1212092628029698048"};
         //test exception handling
         when(mockDao.deleteById(isNotNull())).thenThrow(new RuntimeException("mock"));
         try {
