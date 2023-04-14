@@ -12,11 +12,6 @@ public class TwitterCLISpringBoot implements CommandLineRunner {
     @Autowired
     private TwitterCLIApp twitterCLIApp;
 
-    private static String CONSUMER_KEY = System.getenv("API_KEY");
-    private static String CONSUMER_SECRET = System.getenv("API_KEY_SECRET");
-    private static String ACCESS_TOKEN = System.getenv("ACCESS_TOKEN");
-    private static String TOKEN_SECRET = System.getenv("ACCESS_TOKEN_SECRET");
-
     public TwitterCLISpringBoot(TwitterCLIApp twitterCLIApp) {
         this.twitterCLIApp = twitterCLIApp;
     }
