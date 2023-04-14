@@ -1,9 +1,9 @@
 package ca.jrvs.apps.twitter.dao;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
-import ca.jrvs.apps.twitter.model.Data;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.util.JsonUtil;
+import org.apache.http.HttpResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

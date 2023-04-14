@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,15 +34,14 @@ public class TwitterServiceUnitTest {
 
     @Test
     public void testPostTweet() {
-        Tweet testTweet = new Tweet();
-        Data data = new Data();
-        testTweet.setData(data);
+        Tweet mockTweet = new Tweet();
+        Data data = mockTweet.getData();
         data.setText("test");
 
         //test exception handling
-        when(mockDao.create(testTweet)).thenThrow(new RuntimeException("mock"));
+        when(mockDao.create(mockTweet)).thenThrow(new RuntimeException("mock"));
         try {
-            twitterService.postTweet(testTweet);
+            twitterService.postTweet(mockTweet);
             fail();
         } catch (RuntimeException e) {
             assertTrue(true);
@@ -49,16 +49,19 @@ public class TwitterServiceUnitTest {
 
         TwitterService spyService = Mockito.spy(twitterService);
 
-        //return testTweet when the postTweet() is called
-        doReturn(testTweet).when(spyService).postTweet(any());
-        Tweet response = spyService.postTweet(testTweet);
+        //mock TwitterDao and make it return mockTweet when got called
+        when(mockDao.create(any())).thenReturn(mockTweet);
+        Tweet response = spyService.postTweet(mockTweet);
 
         assertNotNull(response);
-        assertEquals(testTweet.getData().getText(), response.getData().getText());
+        assertEquals(mockTweet.getData().getText(), response.getData().getText());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testPostLongTweet() {
+        Tweet mockTweet = new Tweet();
+        Data data = mockTweet.getData();
+        data.setText("test");
         //build a string that is longer than the limit
         final int LIMIT = 150;
         StringBuilder sb = new StringBuilder();
@@ -68,7 +71,10 @@ public class TwitterServiceUnitTest {
         String invalidString = sb.toString();
         Tweet tweet = new Tweet();
         tweet.getData().setText(invalidString);
-        twitterService.postTweet(tweet);
+        // Set up the mockDao to return the mock Tweet object when create() is called
+        when(mockDao.create(any())).thenReturn(mockTweet);
+        TwitterService spyService = Mockito.spy(twitterService);
+        spyService.postTweet(tweet);
     }
 
     @Test
@@ -83,9 +89,9 @@ public class TwitterServiceUnitTest {
         }
 
         TwitterService spyService = Mockito.spy(twitterService);
-        Tweet expectedTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
+        Tweet mockTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
 
-        doReturn(expectedTweet).when(spyService).showTweet(any(), any());
+        when(mockDao.findById(any())).thenReturn(mockTweet);
         Tweet tweet = spyService.showTweet("1629865830337990656", null);
 
         assertNotNull(tweet);
@@ -93,9 +99,11 @@ public class TwitterServiceUnitTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testInvalidFields(){
+    public void testInvalidFields() throws IOException {
         String id = "1629865830337990656";
         String[] fields = {"id", "invalidField"};
+        Tweet mockTweet = JsonUtil.toObjectFromJson(getTweetResponse, Tweet.class);
+        when(mockDao.findById(any())).thenReturn(mockTweet);
         twitterService.showTweet(id, fields);
     }
 
@@ -121,7 +129,7 @@ public class TwitterServiceUnitTest {
         data.setDeleted(true);
         expectedList.add(expected);
 
-        doReturn(expectedList).when(spyService).deleteTweets(any());
+        when(mockDao.deleteById(any())).thenReturn(expected);
         List<Tweet> tweets = spyService.deleteTweets(ids);
 
         assertNotNull(tweets);
@@ -129,16 +137,18 @@ public class TwitterServiceUnitTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testDeleteInvalidID_1(){
+        TwitterService spyService = Mockito.spy(twitterService);
         String idWithChar = "l2l20g26280296g80A8";
         String[] ids = {idWithChar};
-        twitterService.deleteTweets(ids);
+        spyService.deleteTweets(ids);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testDeleteInvalidID_2(){
+        TwitterService spyService = Mockito.spy(twitterService);
         String largeId = "999999999999999999999999999";
         String[] ids = {largeId};
-        twitterService.deleteTweets(ids);
+        spyService.deleteTweets(ids);
     }
 
     private static final String getTweetResponse = "{\n" +
