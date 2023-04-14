@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+@org.springframework.stereotype.Service
 public class TwitterService implements Service{
     @Autowired
     private CrdDao dao;
@@ -143,7 +144,7 @@ public class TwitterService implements Service{
      * Delete Tweet(s) by id(s).
      *
      * @param ids tweet IDs which will be deleted
-     * @return A list of Tweets
+     * @return A list of Tweets that contains their deletion status
      *
      * @throws IllegalArgumentException if one of the IDs is invalid.
      */
@@ -161,9 +162,10 @@ public class TwitterService implements Service{
                 throw new RuntimeException(e);
             }
 
+            //If a tweet is successfully deleted, then add its id to the response
             if(response != null){
                 response.getData().setId(id);
-            } else {
+            } else { //If not, then new a tweet with its id and add an alert message.
                 response = new Tweet();
                 response.getData().setId(id);
                 response.getData().setText("Did not deleted");

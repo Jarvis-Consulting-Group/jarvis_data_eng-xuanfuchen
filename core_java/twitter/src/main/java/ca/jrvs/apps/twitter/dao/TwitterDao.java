@@ -7,11 +7,13 @@ import ca.jrvs.apps.twitter.util.JsonUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+@Component
 public class TwitterDao implements CrdDao<Tweet, String> {
     //URI constants
     private static final String API_BASE_URI = "https://api.twitter.com";
