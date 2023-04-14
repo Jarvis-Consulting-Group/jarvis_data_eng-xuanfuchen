@@ -7,6 +7,7 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class TwitterControllerIntTest {
     private static String CONSUMER_SECRET = System.getenv("API_KEY_SECRET");
     private static String ACCESS_TOKEN = System.getenv("ACCESS_TOKEN");
     private static String TOKEN_SECRET = System.getenv("ACCESS_TOKEN_SECRET");
+
     private TwitterDao twitterDao;
     private TwitterService twitterService;
     private TwitterController twitterController;
