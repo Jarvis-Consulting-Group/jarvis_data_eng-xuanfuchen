@@ -15,7 +15,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TwitterCLIApp {
-    public static final String USAGE = "USAGE: TwitterCLIApp post|delete [options]";
+    public static final String USAGE = "USAGE:\n" +
+            "TwitterCLIApp post \"content\"\n" +
+            "TwitterCLIApp [tweet_id_1,tweet_id_2,...]\n" +
+            "TwitterCLIApp show <tweet_id> [field_1,field_2,...]\n";
 
     private Controller controller;
 
@@ -38,6 +41,8 @@ public class TwitterCLIApp {
             case "delete":
                 controller.deleteTweet(args).forEach(this::printTweet);
                 break;
+            case "show":
+                printTweet(controller.showTweet(args));
             default:
                 throw new IllegalArgumentException(USAGE);
         }
