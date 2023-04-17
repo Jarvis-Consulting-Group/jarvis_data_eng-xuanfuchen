@@ -1,11 +1,11 @@
 # Introduction
 - What does this project do?
-  This project is a Twitter application using Java 8. I managed my project dependencies using Maven, and dependencies within the project using the Spring framework. The app interacts with Twitter using the Twitter REST API V2. It allows users to post, delete, and lookup tweets by ID using Linux command lines. Sadly, the lookup feature is a paid feature in the Twitter API v2. So only users with API keys in the paid tier can use the lookup feature. The project is packaged as a Docker image for easier distribution.
+  This project is a Twitter application using Java 8. I managed my project dependencies using Maven, and dependencies within the project using the Spring framework. The app interacts with Twitter using the Twitter REST API v2. It allows users to post, delete, and lookup tweets by ID using Linux command lines. Sadly, the lookup feature is a paid feature in the Twitter API v2. So only users with API keys in the paid tier can use the lookup feature. The project is packaged as a Docker image for easier distribution.
 - Techonologies:
     - Java
     - Spring Boot
     - HTTP Client
-    - Twitter API v2
+    - Twitter REST API v2
     - Docker
     - Maven
 
@@ -107,13 +107,13 @@ A retrieved tweet model by this App would contain following properties:
 }
 ```
 ## Spring
-Spring Boot was used in the application to manage all dependencies between classes. Instead of creating an object in each class using all its dependencies in each class. I used Spring Autowire feature to inject the dependencies into a class.
+Spring Boot was used in the application to manage all dependencies between classes. Instead of creating an object in each class by using all its dependencies in each class, The Spring Autowire feature was used to inject the dependencies into a class.
 
-In order to make the dependency injection work, all dependencies were marked using corresponding Component annotation(Controller annotation, Service annotation etc.). Then the ComponentScan is used to auto scan all Beans.
+In order to make the dependency injection work, all dependencies were marked using corresponding Component annotation(Controller annotation, Service annotation etc.). Then the ComponentScan is used to automatically scan all Beans.
 
 # Test
 Both Unit Test and Integrated Test were applied on each layer using Junit Test.
-- For the Unit Test, Mockito Framework was used to mock the behaviour of other layers. This way, only codes for one single layer were run and tested at a time.
+- For the Unit Test, Mockito Framework was used to mock the behaviour of other layers. This way, only the codes for one single layer were run and tested at a time.
 
 - For the Integrated Test, all dependencies are injected into the tested class. This way, the behaviour of the tested class and its dependencies will be tested at the same time.
 
@@ -143,5 +143,5 @@ docker push <docker_username>/<your_image_name>
 ```
 # Improvements
 - More attachments can be added when posting a tweet. For example, a geographic location or a poll can be added to a tweet. Features like starting a poll and receiving poll results after the poll ends could be added to enhance the user experience.
-- More specific log messages could be added to inform the user what has happened. For example, output a message like "Permission denied" in the terminal when a user tries to delete a tweet that is not under that user's account. For now, the app just throws an exception when the unexpected HTTP code was returned.
-- Existing Twitter API libraries, such as Twitter4J, can be used. These libraries provide a higher-level interface to the Java API and they also provides vairous features. Using libraries can simplify the development process and code.
+- More specific log messages could be added to inform the user what has happened. For example, output a message like "Permission denied" in the terminal when a user tries to delete a tweet that is not under that user's account. For now, the app just throws an exception when the unexpected HTTP code is returned.
+- Existing Twitter API libraries, such as Twitter4J, can be used. These libraries provide a higher-level interface to the Twitter APIs, and they also provide numerous features. Using libraries can simplify the development process and code.
