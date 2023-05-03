@@ -1,0 +1,116 @@
+# Preferred name (Characters only)
+name: "Xuanfu Chen"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/Jarvis-Consulting-Group/jarvis_data_eng-xuanfuchen
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary:  I'm a recent graduate from York University with a bachelor's degree in computer science. I have a strong foundation in fundamental concepts like algorithms, data structures, and RDBMS. I had two internships before, both in full-stack development. In my first internship, I participated in the development of a job board website using HTML, CSS, AJAX, and Java Servlets for the back-end, where I learned how back-end business logic works. In my second internship, I developed a data visualization application to visualize stock information for top companies using the Django framework, where I learned how to work with the MVC model. Additionally, I built a dynamic blog web application using Spring Boot where the blogger can use admin pages to manage the blogs, and I was enjoying putting every component together to form a working application. I have strong coding and problem-solving skills, as proven by my past experiences and personal projects. I have always been passionate about programming since I get a sense of achievement from building programs or optimizing codes. With my education and experience, I am well prepared for a junior software engineer position, and I am looking forward to starting my career in this industry full-time.
+# Group your skills by level.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Python
+    - Spring Boot
+    - Django
+    - Linux/Bash/Shell
+    - RDBMS/SQL(MySQL/PostgreSQL)
+    - Agile/Scrum
+    - Git/Github
+  # At least 5 skills
+  competent:
+    - HTML/CSS
+    - Javascript
+    - Docker
+    - Beautiful Soup
+    - MVC developing
+    - JUnit Test
+  # At least 5 skills
+  familiar:
+    - Amazon Web Services(AWS)
+    - Google Cloud Platform(GCP)
+    - Maven
+    - Echarts
+    - Nginx
+    - Tomcat
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Designed and implemented monitoring system that contains multiple scripts to monitor and store the system specification and system resource usage across multiple Linux hosts and store data into a database. Configured and maintained the PostgreSQL Docker container to store and manage the collected data. Automated script execution with Crontab to fetch and store system resource usage in the database every minute for real-time data accuracy.
+  - name: "SQL Project"
+    git_url: "/sql"
+    description: Developed a comprehensive SQL project that includes the setup of a table schema using DDL, and multiple queries to perform various operations on an existing database. These operations include basic CRUD functionality, JOIN statements to combine data from multiple tables, and the use of aggregation functions to extract and summarize data. Demonstrated knowledge of SQL by manipulating string format and using various features to generate desired outputs.
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "Twitter App: Developed a Twitter App utilizing Java 8 and Maven with Spring Boot for efficient dependency management. Implemented a four-layer architecture consisting of DAO, Service, Controller, and Application layers to enhance code organization and scalability. Utilized Twitter API version 2 to enable users to create, read, and delete tweets via the Linux command line. Packaged the project into a Docker image and published it on Docker Hub for easy distribution and deployment."
+      - "JDBC App: Developed a Java 8 Maven-based application that uses the DAO (Data Access Object) design pattern and JDBC to perform basic CRUD (Create, Read, Update, Delete) operations on a PostgreSQL database. Enables users to perform common database operations efficiently. Employed the DAO design pattern to promote good coding practices and make the code more maintainable and extensible. Utilized a PostgreSQL database running inside a Docker container for easy deployment and management. Built the database schema and inserted data using SQL scripts."
+      - "Grep App: Built a Java 8 project with Maven for searching text lines that match a specific pattern in all files under a directory. Implemented two different search implementations, one using for loops and another using Java 8 Stream/Lambda functions for better performance. Utilized a logger library to provide feedback on the search process. Enabled the app to output search results to a file using Java IO APIs. Tested both implementations using JUnit and reached 89% coverage. Deployed the project in a Docker container and uploaded it to Docker Hub for easy distribution."
+#  - name: "Springboot App"
+#    git_url: "/springboot"
+#    description: ""
+#  - name: "Python Data Analytics"
+#    git_url: "/python_data_anlytics"
+#    description: ""
+#  - name: "Hadoop"
+#    git_url: "/hadoop"
+#    description: ""
+#  - name: "Spark"
+#    git_url: "/spark"
+#    description: ""
+#  - name: "Cloud/DevOps"
+#    git_url: "/cloud_devops"
+#    description: ""
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+  #project name
+  - name: "Dynamic Blog Web Application"
+    #URL is optional
+    git_url: "https://github.com/xuanfuchen/BlogProject"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Developed an online blog system that enables administrators to perform CRUD operations on articles, tags, and types while logged in. Implemented a search feature that allows users to easily find articles by name, and a group feature that enables articles to be organized by type or tags for convenient browsing. Implemented a comment feature that enables users to leave comments on articles and reply to other comments. Built front-end pages using Semantic UI and Thymeleaf and leveraged Spring Boot for a reliable and scalable backend solution. Designed a MySQL schema by carefully defining objects and relations to ensure data integrity.
+
+#List of professional experience
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "Junior Software Developer"
+    company: "Jarvis"
+    duration: "Feb 2023 - present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Worked in an Agile/Scrum development environment and developed the product based on the agile framework guidelines. Collaborated with the development team to discuss and deliver software solutions to our customers. Gained valuable experience from working on various software development projects in a professional setting. Worked with practical technologies that are used in the industry, such as Java, Docker, PostgreSQL, Bash Script, etc."
+  - title: "Software Developer Intern"
+    company: "Poros Consulting"
+    duration: "Feb 2022 - Jul 2022"
+    description: "Developed a web application for visualizing information about top companies. Utilized Python libraries, including Request and BeautifulSoup, to fetch data from reliable financial webpages. Effectively using commercial finance APIs to get financial news related to top companies. Designed the MySQL database schema. Created maintainable components capable of updating data in MySQL databases on a daily basis. Realized data visualization using Echarts.js and implemented backend RESTful APIs using Django."
+  - title: "Java Developer Intern"
+    company: "INFINITE, Guangzhou, China"
+    duration: "Jun 2018 - Aug 2018"
+    description: "Contributed to the development of a job board website by building a comment module and a job description module. Designed and developed multiple RESTful APIs using Java to enable efficient communication between front-end and back-end systems. Boosted the efficiency of data retrieval by utilizing SQL to query the MySQL database and retrieve only the necessary data for front-end pages. Ensured high-quality code by utilizing JUnit for automated testing, resulting in approximately 70% test coverage and reliable functionality."
+
+#List of edcuation
+education:
+  - school_name: "York University"
+    duration: "2017-2022"
+    degree: "Bachelor of Science with Honours, Computer Science"
+    department: "Lassonde School of Engineering"
+    # optional
+    awards_achievements:
+      - "2020 Summer Scholarship - York University International Award of Merit"
+
+#Optional section
+others:
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Casual Gaming - Enjoy playing single-player games with a focus on storytelling."
+      - "Competitive gaming - Used to achieve the top 4 in the World of Tanks Playoffs(North America Division) with a team of 15 players."
+      - "Karting Racing - Top 2% in lap time in K1 Speed Karting, Toronto"
