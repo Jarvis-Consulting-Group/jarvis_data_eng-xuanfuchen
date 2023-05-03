@@ -1,0 +1,10 @@
+# IntelliJ IDEA generated files
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
