@@ -1,6 +1,6 @@
 # Introduction
-- What does this project do?
-  This project is a Twitter application using Java 8. I managed my project dependencies using Maven, and dependencies within the project using the Spring framework. The app interacts with Twitter using the Twitter REST API v2. It allows users to post, delete, and lookup tweets by ID using Linux command lines. Sadly, the lookup feature is a paid feature in the Twitter API v2. So only users with API keys in the paid tier can use the lookup feature. The project is packaged as a Docker image for easier distribution.
+- What does this project do?  
+This project is a Twitter application using Java 8. I managed my project dependencies using Maven, and dependencies within the project using the Spring framework. The app interacts with Twitter using the Twitter REST API v2. It allows users to post, delete, and lookup tweets by ID using Linux command lines. Sadly, the lookup feature is a paid feature in the Twitter API v2. So only users with API keys in the paid tier can use the lookup feature. The project is packaged as a Docker image for easier distribution.
 - Techonologies:
     - Java
     - Spring Boot
