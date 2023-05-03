@@ -142,6 +142,6 @@ docker run --rm  <docker_username>/<your_image_name> post "Hello World!"
 docker push <docker_username>/<your_image_name>
 ```
 # Improvements
-- More attachments can be added when posting a tweet. For example, a geographic location or a poll can be added to a tweet. Features like starting a poll and receiving poll results after the poll ends could be added to enhance the user experience.
+- More attachments could be added when posting a tweet. For example, a geographic location or a poll can be added to a tweet. Features like starting a poll and receiving poll results after the poll ends could be added to enhance the user experience.
 - More specific log messages could be added to inform the user what has happened. For example, output a message like "Permission denied" in the terminal when a user tries to delete a tweet that is not under that user's account. For now, the app just throws an exception when the unexpected HTTP code is returned.
 - Existing Twitter API libraries, such as Twitter4J, can be used. These libraries provide a higher-level interface to the Twitter APIs, and they also provide numerous features. Using libraries can simplify the development process and code.
