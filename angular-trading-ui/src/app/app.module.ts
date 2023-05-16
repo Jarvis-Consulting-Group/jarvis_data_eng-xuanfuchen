@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TraderListComponent } from './trader-list/trader-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { AddTraderDialogComponent } from './add-trader-dialog/add-trader-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 library.add(faAddressBook)
@@ -23,7 +26,8 @@ library.add(faAddressBook)
     DashboardComponent,
     NavbarComponent,
     TraderAccountComponent,
-    TraderListComponent
+    TraderListComponent,
+    AddTraderDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ library.add(faAddressBook)
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

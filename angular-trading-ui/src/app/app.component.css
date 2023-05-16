@@ -1,13 +1,13 @@
 body {
     background-color: #f5f7fa;
     display: flex;
-    width: 95vw;
+    width: 100%;
     flex-direction: row;
     margin: auto;
 }
 
 app-navbar {
-    width: 4%;
+    width: 7em;
     color: white;
     font-size: 12px;
     height: 100vh;
