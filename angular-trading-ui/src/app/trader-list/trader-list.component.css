@@ -4,10 +4,12 @@
   
 .mat-header-cell {
     border-right: 1px solid #ccc;
+    border-radius: 10px;
 }
 
-.table-container {
+.rounded-table {
     width: 100%;
+    border-radius: 10px;
 }
 
 .icon-button {
@@ -16,3 +18,10 @@
     margin: 0.1em;
     padding: auto;
 }
+
+.action-button-content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+  

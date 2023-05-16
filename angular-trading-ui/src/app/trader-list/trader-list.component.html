@@ -1,4 +1,4 @@
-<div class="table-container">
+<div class="table-container rounded-table">
     <mat-table [dataSource]="traderList" class="mat-elevation-z8">
         <!-- Column Definitions -->
         <ng-container *ngFor="let column of displayedColumns; let i = index">
@@ -14,11 +14,16 @@
             <mat-cell *matCellDef="let trader">
                 <!-- Action button here -->
                 <button mat-stroked-button class="icon-button" (click)="deleteTrader(trader)" matTooltip="Delete">
-                    Trade
+                    <div class="action-button-content">
+                        <mat-icon>swap_horizontal_circle</mat-icon>
+                        <span>Trade</span>
+                    </div>
                 </button>
                 <button mat-raised-button class="icon-button" color="warn" (click)="deleteTrader(trader)" matTooltip="Delete">
-                    <mat-icon>clear</mat-icon>
-                    Delete
+                    <div class="action-button-content">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </div>
                 </button>
             </mat-cell>
         </ng-container>

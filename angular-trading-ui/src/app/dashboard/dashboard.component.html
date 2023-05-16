@@ -1,8 +1,10 @@
 <div class="header">
     <h1 class="title">Dashboard</h1>
-    <button mat-raised-button (click)="openAddTraderDialog()">
-        <mat-icon class="icon">add_circle_outline</mat-icon>
-        Add a New Trader
+    <button mat-raised-button class="icon-button" (click)="openAddTraderDialog()">
+        <div class="add-trader-button">
+            <mat-icon>add_circle_outline</mat-icon>
+            <span>Add a New Trader</span>
+        </div>
     </button>
 </div>
 <app-trader-list class="trader-list"></app-trader-list>
