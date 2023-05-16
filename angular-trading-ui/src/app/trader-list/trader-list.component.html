@@ -1,0 +1,46 @@
+<div class="table-container">
+    <mat-table [dataSource]="traderList" class="mat-elevation-z8">
+        <!-- Column Definitions -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+          <mat-cell *matCellDef="let trader">{{ trader.firstName }}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+          <mat-cell *matCellDef="let trader">{{ trader.lastName }}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+          <mat-cell *matCellDef="let trader">{{ trader.email }}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="dob">
+          <mat-header-cell *matHeaderCellDef>Date of Birth</mat-header-cell>
+          <mat-cell *matCellDef="let trader">{{ trader.dob }}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="country">
+          <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+          <mat-cell *matCellDef="let trader">{{ trader.country }}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let trader">
+            <!-- Action button here -->
+            <button mat-button mat-raised-button color="primary" (click)="editTrader(trader)" matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTrader(trader)" matTooltip="Delete">
+                <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+      
+        <!-- Row Definition -->
+        <mat-header-row class="table-header-row mat-header-cell" *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let trader; columns: displayedColumns"></mat-row>
+      </mat-table>
+</div>

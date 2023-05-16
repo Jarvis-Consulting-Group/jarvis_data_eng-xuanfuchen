@@ -1,0 +1,11 @@
+.table-header-row {
+    background-color: #ccc;
+}
+  
+.mat-header-cell {
+    border-right: 1px solid #ccc;
+}
+
+.table-container {
+    width: 100%;
+}
