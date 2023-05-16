@@ -10,7 +10,8 @@ import { Trader } from '../trader';
 })
 export class TraderListComponent {
   traderList: Trader[] = [];
-  displayedColumns: string[] = this.traderListService.getColumns();
+  dbColumns: string[] = this.traderListService.getColumns();
+  displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Date of Birth', 'Country'];
 
   //Dependency Injection
   constructor(private traderListService: TraderListService) {}
@@ -28,11 +29,17 @@ export class TraderListComponent {
     );
   }
 
-  editTrader(trader: Trader){
+  editTrader(trader: Trader) {
 
   }
 
-  deleteTrader(trader: Trader){
+  //delete a corresponding trader
+  deleteTrader(trader: Trader) {
+
+  }
+
+  //add a trader to the db
+  addTrader() {
 
   }
 }

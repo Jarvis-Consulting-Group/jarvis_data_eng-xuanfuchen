@@ -1,2 +1,8 @@
-<h1 class="title">Dashboard</h1>
+<div class="header">
+    <h1 class="title">Dashboard</h1>
+    <button mat-raised-button (click)="openAddTraderDialog()">
+        <mat-icon class="icon">add_circle_outline</mat-icon>
+        Add a New Trader
+    </button>
+</div>
 <app-trader-list class="trader-list"></app-trader-list>
